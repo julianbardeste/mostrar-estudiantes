@@ -19,3 +19,10 @@ function showData(dataArray) {
 }
 
 // Escribe el código necesario para realizar el fetch al archivo con los datos y mostrar los estudiantes con la función showData
+
+fetch(DATA_URL)
+  .then(response => response.json()) //El primer then recibe la respuesta del fetch y la convierte a formato JSON
+  .then(data => { // El segundo then recibe los datos convertidos a JSON
+    showData(data.students); // Llama a la función showData pasándole el array de estudiantes que está dentro del objeto JSON
+  })
+  .catch(error => console.error("Error cargando JSON:", error)); // El catch es un manejador de errores que se ejecuta si hay algún problema al cargar el JSON
